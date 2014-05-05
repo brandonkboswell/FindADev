@@ -14,31 +14,33 @@
     </nav>
 
     <div class="appContainer">
-      <div class="container">
-        {{--Search--}}
-        <form action="/" method="GET">
-          <input id="search" name="query" type="search" class="form-control" value="{{Input::get('query')}}" placeholder="Search">
-        </form>
+      <div class="userSearch">
+        <div class="container">
+          {{--Search--}}
+          <form action="/" method="GET">
+            <input id="search" name="query" type="search" class="form-control" value="{{Input::get('query')}}" placeholder="Search">
+          </form>
 
-        {{--Results--}}
-        <div class="userWell">
-          @if(!$users->isEmpty())
-              <ul class="list-group">
-                @foreach($users as $user)
-                  <li class="list-group-item">
-                    <img src="{{$user->data->profile_image_url}}">
-                    <a target="_blank" href="{{$user->data->url}}">
-                      <h3>{{$user->data->name}}</h3>
-                    </a>
-                    <p class="description">{{$user->data->description}}</p>
-                    <p class="location bold">{{$user->location}}</p>
-                  </li>
-                @endforeach
-              </ul>
-          @else
-            {{--No Results ;(--}}
-            <h3 class="center">Sorry no users were found in that area.</h3>
-          @endif
+          {{--Results--}}
+          <div class="userWell">
+            @if(!$users->isEmpty())
+                <ul class="list-group">
+                  @foreach($users as $user)
+                    <li class="list-group-item">
+                      <img src="{{$user->data->profile_image_url}}">
+                      <a target="_blank" href="{{$user->data->url}}">
+                        <h3>{{$user->data->name}}</h3>
+                      </a>
+                      <p class="description">{{$user->data->description}}</p>
+                      <p class="location bold">{{$user->location}}</p>
+                    </li>
+                  @endforeach
+                </ul>
+            @else
+              {{--No Results ;(--}}
+              <h3 class="center">Sorry no users were found in that area.</h3>
+            @endif
+          </div>
         </div>
       </div>
     </div>
